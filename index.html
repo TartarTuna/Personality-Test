@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Test</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/all.min.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 首頁 -->
+    <div class="startPage v-100" v-if="questionIndex === 0">
+      <div class="startImg mb-3 mb-md-9">
+        <img class="startImg w-100 obj-c" src="https://images.unsplash.com/11/dreamcatcher.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80" alt="startImg">
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-5 mb-2 mb-md-0">
+            <h1 class="fz-4 fz-md-5">五大性格特質</h1>
+            <div class="d-flex">
+              <h1 class="fz-4 fz-md-5 mr-2 mr-md-3">心理測驗</h1>
+              <P class="fw-300 text-primary">Big Five personality<br>traits test</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-7">
+            <div class="row justify-content-center">
+              <p class="col-12 col-md-7 textColor fw-300 mb-4 mb-md-0">{{ description }}</p>
+              <button class="col-11 col-md-5 fillBtn fz-4" @click.prevent="questionIndex += 1">開始測驗<i class="fas fa-long-arrow-alt-right ml-1"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 測驗頁 -->
+    <div class="testPage v-100 position-relative" v-else-if="questionIndex > 0 && !result">
+      <div v-for="(question, index) in questions" :key="index" class=" container">
+        <div v-if="questionIndex === index + 1">
+          <div class="qNum position-absolute"></div>
+          <div class="qNumBG position-absolute mb-2"></div>
+          <div class="row">
+            <div class="col-12 col-md-3 mb-7 text-center text-md-left">
+              <h1 class="pure fz-5 fz-md-15">Q{{ index + 1 }}</h1>
+              <p class="d-block d-md-none fz-3 pure fw-bold mt-3">{{ question.problem }}</p>
+            </div>
+            <div class="textContents col-12 col-md-9">
+              <div class="text-left">
+                <p class="d-none d-md-block fz-6 pure fw-bold mt-14 mb-5">{{ question.problem }}</p>
+                <div v-for="option in question.options" :key="option.category">
+                  <label class="fz-2 fz-md-3 pure fw-300 mb-2" :for="option.fraction">
+                    <input 
+                      type="radio" 
+                      :id="option.fraction" 
+                      v-model="questionList[Math.floor(index/2)].score[index%2]"
+                      :name="question.id" 
+                      :value="option.fraction" 
+                      @click="isDisabledBtn()">
+                    <span>{{ option.description }}</span>
+                  </label>
+                </div>
+              </div>
+              <button class="fillBtn fz-3 px-2 py-1 mt-4 " v-if="index < 9" @click.prevent="nextPage(question.id)" :disabled="isDisabled">
+                下一題<i class="fas fa-long-arrow-alt-right ml-1"></i>
+              </button>
+              <button class="fillBtn fz-3 px-2 py-1 mt-4" v-else @click.prevent="showResult(question.id)" :disabled="isDisabled">
+                看看結果<i class="fas fa-long-arrow-alt-right ml-1"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 結果頁 -->
+    <div class="resultPage v-100" v-else="result">
+      <header class="position-relative">
+        <nav class="navbar navbar-expand-md position-absolute w-100">
+          <a class="navbar-brand text-center" href="#">
+            <p class="fz-2 mb-0 pure">{{ title.zh }}</p>
+            <p class="fz-1-1 fw-300 mb-0 pure d-none d-md-block">{{ title.en }}</p>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-list-ul pure fz-2"></i></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav resultListBG">
+              <li type="button" class="nav-item nav-link" v-for="(item, index) in resultList" @click.prevent="resultIndex = index, closeList()" :class="{'active':resultIndex === index}">
+                <a data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-link pure">{{ item.category }}<span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      
+      <div v-for="(item, index) in resultList" :key="index">
+        <div v-if="resultIndex === index">
+          <div class="resultImgArea position-relative">
+            <div class="resultImg bg-cover"></div>
+            <div class="resultDes w-100 bg-lightDark position-absolute d-flex align-items-center">
+              <div class="container">
+                <div class="row flex-column flex-md-row align-items-center">
+                  <div class="col-12 col-md-3 mb-2 mb-md-0">
+                    <p class="mb-0 fz-3 fz-md-5 pure">{{ item.category }}</p>
+                    <p class="mb-0 fz-2 fz-md-3 fw-300 pure">{{ item.categoryEN }}</p>
+                  </div>
+                  <div class="col-12 col-md-5">
+                    <p class="mb-0 fz-2 fw-300 pure letter-space-3">{{ item.description.desc }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 結果描述區 -->
+          <div class="resultContents container pt-6">
+            <div class="row flex-column flex-md-row">
+              <div class="col-12 col-md-8" v-if="item.score <= degree.low">
+                <h1 class="text-primary mb-2">{{ item.degree }}</h1>
+                <p class="fw-300 text-textColor">{{ item.description.low }}</p>
+              </div>
+              <div class="col-12 col-md-8" v-else-if="item.score === degree.middle">
+                <h1 class="text-primary mb-2">{{ item.degree }}</h1>
+                <p class="fw-300 text-textColor">{{ item.description.middle }}</p>
+              </div>
+              <div class="col-12 col-md-8" v-else>
+                <h1 class="text-primary mb-2">{{ item.degree }}</h1>
+                <p class="fw-300 text-textColor">{{ item.description.high }}</p>
+              </div>
+
+              <div class="col-12 col-md-4 text-right align-self-end">
+                <button class="fz-3 bottomLineBtn fw-300" @click.prevent="nextResult()"><span class="fw-bold">{{ resultIndex === 4? "再測一次":"下一個" }}</span><i
+                    class="fas fa-long-arrow-alt-right ml-1 text-primary"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="all.js"></script>
+</body>
+</html>
