@@ -1,0 +1,435 @@
+//fonts
+.f-Serif {
+  font-family: 'Noto Serif TC', serif;
+}
+
+.fz-1 {
+    font-size: 8px;
+}
+
+.fz-1-1 {
+    font-size: 12px;
+}
+
+.fz-2 {
+    font-size: 16px;
+}
+
+.fz-3 {
+    font-size: 24px;
+}
+
+.fz-4 {
+    font-size: 32px;
+}
+
+.fz-5 {
+  font-size: 40px;
+}
+
+.fz-6 {
+    font-size: 48px;
+}
+
+.fz-7 {
+  font-size: 56px;
+}
+
+.fz-15 {
+  font-size: 120px;
+}
+
+.fz-2-1 {
+    font-size: 18px;
+}
+
+.fz-3-1 {
+    font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .fz-md-2 {
+    font-size: 16px;
+  }
+
+  .fz-md-3 {
+    font-size: 24px;
+  }
+
+  .fz-md-4 {
+    font-size: 32px;
+  }
+
+  .fz-md-5 {
+    font-size: 40px;
+  }
+
+  .fz-md-6 {
+    font-size: 48px;
+  }
+
+  .fz-md-7 {
+    font-size: 57px;
+  }
+
+  .fz-md-15 {
+    font-size: 120px;
+  }
+
+  .fz-md-2-1 {
+    font-size: 18px;
+  }
+
+  .fz-md-3-1 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 426px) {
+  .fz-sm-4 {
+    font-size: 32px;
+  }
+}
+
+//line-height
+.lh-1 {
+    line-height: 94px;
+}
+
+.lh-2 {
+  line-height: 36px;
+}
+
+.lh-3 {
+  line-height: 30px;
+}
+
+@media (min-width: 768px) {
+.lh-md-1 {
+    line-height: 40px;
+}
+}
+
+.letter-space-1 {
+  letter-spacing: 8px;
+}
+
+.letter-space-2 {
+  letter-spacing: 4px;
+}
+
+.letter-space-3 {
+  letter-spacing: 2px;
+}
+
+.letter-space-4 {
+  letter-spacing: 6px;
+}
+
+//font-weight
+.fw-bold {
+    font-weight: 500;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+
+.bg-cover{
+    background-size: cover;
+    background-position: center center;
+}
+
+.obj-c {
+  object-fit: cover;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-md-20 {
+  @media (min-width: 768px) {
+    width: 20%;
+  }
+}
+
+.w-md-25 {
+  @media (min-width: 768px) {
+    width: 25%;
+  }
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-md-30 {
+  @media (min-width: 768px) {
+    width: 30%;
+  }
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-md-20 {
+  @media (min-width: 768px) {
+    width: 20%;
+  }
+}
+
+.w-md-40 {
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+}
+
+.w-md-49 {
+  @media (min-width: 768px) {
+    width: 49%;
+  }
+}
+
+.w-md-50 {
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+}
+
+.w-md-60 {
+  @media (min-width: 768px) {
+    width: 60%;
+  }
+}
+
+.w-md-80 {
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+}
+
+.w-md-70 {
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+}
+
+.w-md-30 {
+  @media (min-width: 768px) {
+    width: 30%;
+  }
+}
+
+.w-md-100 {
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+}
+
+.h-500 {
+  max-height: 500px;
+}
+
+.h-600 {
+  max-height: 600px;
+}
+
+.h-100 {
+  max-height: 100px;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.v-100 {
+  height: calc(100vh);
+}
+
+.w-100px {
+  width: 100px;
+}
+
+.rounded-50 {
+  border-radius: 50px;
+}
+
+.rounded-md-top {
+  @media (min-width: 768px) {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+
+.border-none {
+  border: none;
+}
+
+.cursor-p {
+  cursor: pointer;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+//color
+.textColor {
+  color: $textColor;
+}
+
+.pure {
+  color: #ffffff;
+}
+
+.bg-lightDark {
+  background-color: #0000008e;
+}
+
+
+// 按鈕
+.fillBtn {
+    display: inline-block;
+    color: #ffffff;
+    background-color: $primary;
+    // font-size: 32px;
+    letter-spacing: 2px;
+    line-height: 48px;
+    border-radius: 10px;
+    border: none;
+    transition: all .3s;
+
+    &:hover {
+        background-color: $dark;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.bottomLineBtn {
+    display: inline-block;
+    background-color: #ffffff;
+    letter-spacing: 2px;
+    line-height: 48px;
+    border: none;
+    transition: all .3s;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: $primary;
+      transition: width .3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+}
+
+//input radio
+.radioLabel {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  cursor: pointer;
+}
+
+.radioInput {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.radioBtn {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+  margin-right: 1rem;
+
+  //中間點點和背景的位置設定
+  &::before, &::after {
+  content: "";
+  display: block;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  border-radius: inherit;
+  transform: scale(0);
+  transform-origin: center center;
+  }
+
+  //中間點點
+  &::before {
+    background: #ffffff;
+    opacity: 0;
+    transition: .3s;
+  }
+
+  //點點背景
+  &::after {
+    background:  #ffffff;
+    opacity: .4;
+    transition: .6s;
+  }
+}
+
+//點選後點點才會出現
+input:checked+.radioBtn::before {
+  opacity: 1;
+  transform: scale(.6);
+}
+
+//圈圈設定 hover 和 focus 效果
+input:hover+.radioBtn,
+input:focus+.radioBtn {
+  border: 2px solid $info;
+}
+
+//中間點點設定 hover 和 focus 效果
+input:hover+.radioBtn:before,
+input:focus+.radioBtn:before {
+  background: $info;
+}
+
+//文字設定 hover 效果
+input:hover~.radioTxt {
+  color:$info;
+}
+
+//點點背景 hover 和 focus 效果
+input:focus+.radioBtn::after,
+input:active+.radioBtn::after {
+  opacity: .1;
+  transform: scale(2.6);
+}

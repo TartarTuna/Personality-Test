@@ -1,0 +1,78 @@
+.startImg {
+    max-height: 440px;
+}
+
+.testPage {
+    background-color: $secondary;
+    
+    .qNum {
+        height: 400px;
+        width: 520px;
+        background-color: #F19483;
+        clip-path: polygon(100% 0, 0 0, 0 100%);
+        top: 0;
+        left: 0;
+    
+        @media(max-width: 768px) {
+            display: none;
+        }
+    }
+    
+    .qNumBG {
+        @media(max-width: 768px) {
+            height: 150px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #F19483;
+        }
+    }
+}
+
+
+.resultPage {
+    .navbar-nav a:hover {
+        color: $primary;
+    }
+
+    .resultListBG {
+        @media (max-width: 768px) {
+            background-color:  #0000008e;
+        }
+    }
+    
+    
+}
+
+.active {
+    border-bottom: 2px solid $primary;
+    cursor: pointer;
+}
+
+
+.resultImgArea {
+    z-index: -2;
+
+    .resultImg {
+        background-image: url(https://images.unsplash.com/photo-1572923224293-d23f285d74f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1566&q=80);
+        height: 440px;
+        top: 0;
+        left: 0;
+
+        @media (max-width: 425px) {
+            height: 550px;
+        }
+    }
+    
+    .resultDes {
+        height: 200px;
+        bottom: 0;
+        left: 0;
+
+        @media (max-width: 425px) {
+            height: 300px;
+        }
+    }
+}
+
+
