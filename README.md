@@ -1,5 +1,4 @@
-# 五大性格特質心理測驗
-## Personality Test
+# 五大性格特質心理測驗 Personality Test
 
 使用 Vue.js 與關注點分離概念，完成的簡易版心理測驗。
 
